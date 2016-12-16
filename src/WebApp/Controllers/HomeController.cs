@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using WebApp.Domain;
 
 namespace WebApp.Controllers
 {
@@ -15,7 +19,13 @@ namespace WebApp.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            string[] collection = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "*.*", SearchOption.AllDirectories);
+            StringBuilder sb = new StringBuilder();
+            foreach (var item in collection)
+            {
+                sb.Append(item).Append("\r\n");
+            }
+            ViewBag.Message = "Data:"+ AppDomain.CurrentDomain.BaseDirectory + "\r\n" + sb.ToString();
 
             return View();
         }

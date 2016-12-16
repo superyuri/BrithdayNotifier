@@ -18,7 +18,7 @@ namespace WebApp.Domain
             }
         }
         private static List<Birthday> birthdays = new List<Birthday>();
-        private static string Filename = AppDomain.CurrentDomain.BaseDirectory+"\\data.data";
+        public static string Filename = AppDomain.CurrentDomain.BaseDirectory+"\\data.data";
         
         public static List<Birthday>  GetBirthdays()
         {
@@ -35,10 +35,10 @@ namespace WebApp.Domain
             //{
             //    item.SolarCalender - DateTime.Now
             //}
-            return birthdays.Where(c => (c.SolarCalender - DateTime.Now).Days > 0 && (c.SolarCalender - DateTime.Now).Days < days)
-                .Union(birthdays.Where(c => (c.LunarCalendar - DateTime.Now).Days > 0 && (c.LunarCalendar - DateTime.Now).Days < days))
-                .Union(birthdays.Where(c => (c.NextLunarCalendar - DateTime.Now).Days > 0 && (c.NextLunarCalendar - DateTime.Now).Days < days))
-                .Union(birthdays.Where(c => (c.NextSolarCalender - DateTime.Now).Days > 0 && (c.NextSolarCalender - DateTime.Now).Days < days));
+            return birthdays.Where(c => (c.SolarCalender - DateTime.Now).Days >= 0 && (c.SolarCalender - DateTime.Now).Days < days)
+                .Union(birthdays.Where(c => (c.LunarCalendar - DateTime.Now).Days >= 0 && (c.LunarCalendar - DateTime.Now).Days < days))
+                .Union(birthdays.Where(c => (c.NextLunarCalendar - DateTime.Now).Days >= 0 && (c.NextLunarCalendar - DateTime.Now).Days < days))
+                .Union(birthdays.Where(c => (c.NextSolarCalender - DateTime.Now).Days >= 0 && (c.NextSolarCalender - DateTime.Now).Days < days));
         }
         /// <summary>
         /// 获得某年某月过生日的弟兄姐妹

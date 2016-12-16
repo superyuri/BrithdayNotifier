@@ -199,9 +199,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="data.data">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <Content Include="data.data" />
     <None Include="Properties\PublishProfiles\bcm6yh2sa7 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\bcm6yh2sa7 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
